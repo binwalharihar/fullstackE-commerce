@@ -5,6 +5,7 @@ import loginIcon from "../assest/signin.gif";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { useState } from "react";
 import imageTobase64 from "../helper/imagetobase64";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -16,6 +17,7 @@ const SignUp = () => {
     confirmPassword: "",
     profilePic: "",
   });
+  const navigate = useNavigate();
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setData((preve) => {
@@ -53,6 +55,7 @@ const SignUp = () => {
           confirmPassword: "",
           profilePic: "",
         });
+        navigate("/Login");
       } else {
         toast.error("Signup failed", result.message);
       }
